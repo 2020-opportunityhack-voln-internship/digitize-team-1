@@ -31,14 +31,16 @@ ALLOWED_HOSTS = ['project-pypl.herokuapp.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-  'sampleapp',
-
   'django.contrib.admin',
   'django.contrib.auth',
   'django.contrib.contenttypes',
   'django.contrib.sessions',
   'django.contrib.messages',
   'django.contrib.staticfiles',
+  'rest_framework',
+
+  'sampleapp',
+  'formupload',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +132,11 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
