@@ -1,5 +1,8 @@
 from django.db import models
 
-# Create your models here.
+
 class Form(models.Model):
+    """
+    Model that contains a file that is uploaded to website
+    """
     file_upload = models.FileField()

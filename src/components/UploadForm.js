@@ -12,15 +12,19 @@ class UploadForm extends Component {
   render() {
     return (
       <div>
-      <h1>Upload</h1>
-      <form action="/upload" method="POST"> {/* TODO Django needs to handle upload at this endpoint */}
-      <label>
-      Upload File:
-      <input type="file" name="form_upload" />
-      <br/>
-      <input type="submit" value="Submit"/>
-      </label>
-      </form>
+        <h1>Upload</h1>
+        <form action="/upload" method="POST">
+          {
+            /* TODO Django needs to handle upload at this endpoint */
+
+          }
+          <label>
+            Upload File:
+            <input type="file" name="form_upload" />
+            <br/>
+            <input type="submit" value="Submit"/>
+          </label>
+        </form>
       </div>
     );
   }
