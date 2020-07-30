@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from .models import Form
+from .models import PaperForm
 
-#Form serializer that converts data into json that react will read
-class FormSerializer(serializers.ModelSerializer):
+
+class PaperFormSerializer(serializers.ModelSerializer):
     """
-    Serializes data which converts django models to json format which react will read and vice versa
+    Serializer that converts the paper form model into JSON
     """
     class Meta:
-        model = Form
+        model = PaperForm
         fields = '__all__'

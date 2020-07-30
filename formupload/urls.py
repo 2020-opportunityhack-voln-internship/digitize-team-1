@@ -2,12 +2,11 @@ from django.urls import include, path
 from rest_framework import routers
 from . import views
 
-router = routers.DefaultRouter()
-router.register(r'form', views.FormViewSet)
-
-# Url path to access the api interface
+"""
+URL Config for Form Upload API. 
+"""
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('upload/', views.PaperFormUploadView.as_view(), name= 'paper_form'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
