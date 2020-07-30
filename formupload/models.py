@@ -1,8 +1,14 @@
 from django.db import models
 
 
-class Form(models.Model):
+class PaperForm(models.Model):
     """
-    Model that contains a file that is uploaded to website
+    Model for paper forms that will be uploaded to website
     """
-    file_upload = models.FileField()
+
+    paper_form = models.ImageField(upload_to='paper_forms')
+    title = models.CharField(max_length=100, blank=True)
+
+    def __str__(self):
+        return self.title
+
