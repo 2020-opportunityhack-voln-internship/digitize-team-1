@@ -4,6 +4,7 @@ Check this for the source of this project: https://github.com/nicholaskajoh/Reac
 ```
 npm install
 pip install -r requirements.txt
+npm install axios
 ```
 
 # To Develop React app
