@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
   'sampleapp',
   'formupload',
+  'np_users',
 ]
 
 MIDDLEWARE = [
@@ -148,3 +149,5 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+AUTH_USER_MODEL = 'np_users.CustomUser'
