@@ -42,7 +42,10 @@ INSTALLED_APPS = [
 
   'sampleapp',
   'formupload',
+  'users',
 ]
+
+AUTH_USER_MODEL = 'users.User'
 
 MIDDLEWARE = [
   'corsheaders.middleware.CorsMiddleware',
