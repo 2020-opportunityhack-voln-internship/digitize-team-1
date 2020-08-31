@@ -1,6 +1,7 @@
 Django==2.2.13
 django-cors-headers==3.4.0
 djangorestframework==3.11.0
+django-rest-knox==4.1.0
 gunicorn==19.7.1
 Pillow==7.2.0
 whitenoise==3.3.1
