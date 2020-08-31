@@ -6,7 +6,7 @@ import {
 } from "reactstrap";
 
 class UploadForm extends Component {
-    /*  Component renders form that npo users can user to upload images of paper forms and then sends the form to the api where it gets stored */
+    /*  Component renders form that npo accounts can user to upload images of paper forms and then sends the form to the api where it gets stored */
 
     state = {
       paper_form: null,

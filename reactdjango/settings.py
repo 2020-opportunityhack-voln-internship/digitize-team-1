@@ -37,15 +37,19 @@ INSTALLED_APPS = [
   'django.contrib.sessions',
   'django.contrib.messages',
   'django.contrib.staticfiles',
+
   'rest_framework',
+  'knox',
   'corsheaders',
 
   'sampleapp',
   'formupload',
-  'users',
+  'accounts',
 ]
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'accounts.User'
+
+
 
 MIDDLEWARE = [
   'corsheaders.middleware.CorsMiddleware',
@@ -140,11 +144,14 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-        'rest_framework.permissions.AllowAny'
-    ]
+    # or allow read-only access for unauthenticated accounts.
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    #     'rest_framework.permissions.AllowAny'
+    # ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'knox.auth.TokenAuthentication',
+    ],
 }
 #Allows the api to accept requests from other sources
 CORS_ORIGIN_ALLOW_ALL = True
