@@ -5,6 +5,9 @@ from .models import User
 
 
 class RegisterForm(forms.ModelForm):
+    """
+    Register User form that is used by admin
+    """
     password = forms.CharField(widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
     npo = forms.CharField(max_length=255)
@@ -33,8 +36,7 @@ class RegisterForm(forms.ModelForm):
 
 class UserAdminCreationForm(forms.ModelForm):
     """
-    A form for creating new accounts. Includes all the required
-    fields, plus a repeated password.
+    Create new account via admin
     """
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
@@ -64,9 +66,8 @@ class UserAdminCreationForm(forms.ModelForm):
 
 
 class UserAdminChangeForm(forms.ModelForm):
-    """A form for updating accounts. Includes all the fields on
-    the user, but replaces the password field with admin's
-    password hash display field.
+    """
+    Update account via admin
     """
     password = ReadOnlyPasswordHashField()
     npo = forms.CharField(max_length=255)

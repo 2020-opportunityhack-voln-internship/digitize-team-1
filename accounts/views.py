@@ -5,7 +5,7 @@ from knox.models import AuthToken
 
 from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
 
-
+#API endpoint for user profile, can GET, PUT, and DELETE user profile. Only users can access their personal information via their token
 class UserAPIView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [
         permissions.IsAuthenticated,
@@ -15,7 +15,7 @@ class UserAPIView(generics.RetrieveUpdateDestroyAPIView):
     def get_object(self):
         return self.request.user
 
-
+#API endpoint for user registration. POST request creates new user instace and returns user
 class RegisterAPIView(generics.GenericAPIView):
     serializer_class = RegisterSerializer
 
@@ -27,7 +27,7 @@ class RegisterAPIView(generics.GenericAPIView):
             "user": UserSerializer(user, context=self.get_serializer_context()).data
         })
 
-
+#API endpoint for user registration.  POST request uses login serializer to validate credentials and if successful, returns user and token
 class LoginAPIView(generics.GenericAPIView):
     serializer_class = LoginSerializer
 

@@ -4,6 +4,7 @@ from knox.views import LogoutView
 
 from .views import UserAPIView, RegisterAPIView, LoginAPIView
 
+#url patterns for all account functions
 urlpatterns = [
     path('', include('knox.urls')),
     path('user/<int:pk>', UserAPIView.as_view()),

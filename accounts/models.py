@@ -9,7 +9,7 @@ from django.contrib.auth.models import (
 class UserManager(BaseUserManager):
     def create_user(self, email, first_name, last_name, npo, password=None):
         """
-        Creates and saves a User with the given email and password.
+        Create custom user with email, first_name, last_name, npo and password fields.
         """
         if not email:
             raise ValueError('Users must have an email address')
@@ -36,7 +36,7 @@ class UserManager(BaseUserManager):
 
     def create_staffuser(self, email, npo, first_name, last_name, password):
         """
-        Creates and saves a staff user with the given email and password.
+        Creates statf user with custom fields.
         """
         user = self.create_user(
             email,
@@ -51,7 +51,7 @@ class UserManager(BaseUserManager):
 
     def create_superuser(self, email, npo, first_name, last_name, password):
         """
-        Creates and saves a superuser with the given email and password.
+        Create superuser with custom fields.
         """
         user = self.create_user(
             email,

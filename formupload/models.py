@@ -7,7 +7,8 @@ class PaperForm(models.Model):
     """
 
     paper_form = models.ImageField(upload_to='paper_forms')
-    title = models.CharField(max_length=100, blank=True, unique=True)
+    title = models.CharField(max_length=100, blank=True)
+
 
     def __str__(self):
         return self.title
