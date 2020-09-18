@@ -24,7 +24,7 @@ class UploadForm extends Component {
   handleSubmit = (event) => {
     /* Sends file to api using axios */
 
-    //event.preventDefault();
+    event.preventDefault();
     console.log(this.state);
     let form_data = new FormData();
     form_data.append('paper_form', this.state.paper_form);
