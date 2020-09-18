@@ -1,3 +1,4 @@
+import os
 import cv2 as cv
 import numpy as np
 from matplotlib import pyplot as plt
@@ -5,8 +6,14 @@ import time
 import webbrowser
 
 # Both config and weights need to be from a 3-channel generated model
-file_config = "yolov3-voc.cfg"
-file_weights = "yolov3-voc_best.weights"
+directory=os.getcwd()
+#print(directory[-2:])
+if directory[-2:]=='ml':
+    file_config = "yolov3-voc.cfg"
+    file_weights = "yolov3-voc_best.weights"
+elif directory[-15:]=='digitize-team-1':
+    file_config = directory+"\\ml\\yolov3-voc.cfg"
+    file_weights = directory+"\\ml\\yolov3-voc_best.weights"
 
 # Load the weights and configutation to form the pretrained YOLOv3 model
 net = cv.dnn.readNetFromDarknet(file_config, file_weights)
@@ -156,6 +163,7 @@ def htmlWrapper(boxes, confidences, classids, name='TestFile'):
 
 
 def detect(image_filename):
+    name=image_filename[:-4] #Currently, this should append the filename to remove the extension, but only works for 3-letter extensions
     img = cv.imread(image_filename,cv.IMREAD_COLOR)
 
     try:
@@ -185,7 +193,6 @@ def detect(image_filename):
     plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
     plt.imshow(frame)
     #Create HTML file
-    #Currently, this should save under 'TestFile.html'
-    htmlWrapper(boxes, confidences, classids)
+    #Currently, this should save under the same name as the image
+    htmlWrapper(boxes, confidences, classids, name)
     plt.show()
-    
