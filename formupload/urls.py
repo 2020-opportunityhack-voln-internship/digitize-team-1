@@ -8,5 +8,7 @@ URL Config for Form Upload API.
 
 urlpatterns = [
     path('upload/', views.PaperFormUploadView.as_view(), name= 'paper_form'),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('paperform/<int:pk>/update', views.PaperFormUpdateView.as_view(), name='paper_form_update'),
+    path('paperform/<int:pk>/delete', views.PaperFormDeleteView.as_view(), name='paper_form_delete'),
+
 ]

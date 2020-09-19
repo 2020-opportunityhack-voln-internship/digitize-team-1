@@ -6,7 +6,7 @@ import {
 } from "reactstrap";
 
 class UploadForm extends Component {
-    /*  Component renders form that npo users can user to upload images of paper forms and then sends the form to the api where it gets stored */
+    /*  Component renders form that npo accounts can user to upload images of paper forms and then sends the form to the api where it gets stored */
 
     state = {
       paper_form: null,
@@ -24,7 +24,7 @@ class UploadForm extends Component {
   handleSubmit = (event) => {
     /* Sends file to api using axios */
 
-    //event.preventDefault();
+    event.preventDefault();
     console.log(this.state);
     let form_data = new FormData();
     form_data.append('paper_form', this.state.paper_form);
