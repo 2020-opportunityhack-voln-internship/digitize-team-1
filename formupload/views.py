@@ -1,4 +1,5 @@
 
+
 from .serializers import PaperFormSerializer, PaperFormCreateSerializer
 from .models import PaperForm
 from rest_framework.views import APIView
@@ -6,6 +7,9 @@ from rest_framework.generics import UpdateAPIView, DestroyAPIView
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework import status
+from importlib import import_module
+import os
+ml=import_module('digitize-team-1.ml.ML')
 
 
 class PaperFormUploadView(APIView):
@@ -32,10 +36,13 @@ class PaperFormUploadView(APIView):
         paper_form_serializer = PaperFormCreateSerializer(data=request.data)
         if paper_form_serializer.is_valid():
             paper_form_serializer.save()
+            paper_form=paper_form_serializer.data["paper_form"]
+            ml.detect(os.getcwd()+str(paper_form))
             return Response(paper_form_serializer.data, status=status.HTTP_201_CREATED)
         else:
             print('error', paper_form_serializer.errors)
             return Response(paper_form_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 #allows paperform entry to be updated, change file, name, and status
