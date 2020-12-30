@@ -1,9 +1,17 @@
 Check this for the source of this project: https://github.com/nicholaskajoh/React-Django
 
 # Setup
+In the same root folder where this directory is installed, create a file called 'setup.py' and copy-paste the following code into it:
+```
+from setuptools import setup, find_packages
+
+setup(name='digitize_team_1', version='1.0', packages=find_packages())
+```
+Then, run the following commands in command prompt in the root folder:
 ```
 npm install
 pip install -r requirements.txt
+pip install -e .
 npm install axios
 ```
 
